@@ -60,3 +60,7 @@ a:active {}
 
 ## 11. ie6对png图片格式支持不好
 解决方案：引用一段脚本处理
+
+
+引自:  
+https://www.nowcoder.com/ta/front-end-interview/review?query=&asc=true&order=&page=18 

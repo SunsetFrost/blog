@@ -1,7 +1,7 @@
 ---
 title: Http,Https,Http2区别
 date: 2017/5/08 22:12
-categories: 网络与系统基础
+categories: 网络与浏览器
 tags: 协议
 ---
 
@@ -15,18 +15,16 @@ HTTP Strict Transport Security (通常简称为HSTS) 是一个安全功能，它
 
 Strict Transport Security解决了这个问题；只要你通过HTTPS请求访问银行网站，并且银行网站配置好Strict Transport Security，你的浏览器知道自动使用HTTPS请求，这可以阻止黑客的中间人攻击的把戏。
 #### 启用 Strict Transport Security
-
 开启HSTS只需要当通过HTTPS方式访问你的网站时，返回 Strict-Transport-SecurityHTTP 头信息:
 Strict-Transport-Security: max-age=expireTime [; includeSubdomains]
 
-## HTTPS与HTTP的一些区别
+### HTTPS与HTTP的区别
 - HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。
 - HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。
 - HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。
 - HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题。
 
-## SPDY
-
+### SPDY
 - 降低延迟，针对HTTP高延迟的问题，SPDY优雅的采取了多路复用（multiplexing）。多路复用通过多个请求stream共享一个tcp连接的方式，解决了HOL blocking的问题，降低了延迟同时提高了带宽的利用率。
 - 请求优先级（request prioritization）。多路复用带来一个新的问题是，在连接共享的基础之上有可能会导致关键请求被阻塞。SPDY允许给每个request设置优先级，这样重要的请求就会优先得到响应。比如浏览器加载首页，首页的html内容应该优先展示，之后才是各种静态资源文件，脚本文件等加载，这样可以保证用户能第一时间看到网页内容。
 - header压缩。前面提到HTTP1.x的header很多时候都是重复多余的。选择合适的压缩算法可以减小包的大小和数量。
@@ -49,4 +47,4 @@ HTTP2.0可以说是SPDY的升级版（其实原本也是基于SPDY设计的）�
 
 
 
-引自：https://juejin.im/post/5a77fe396fb9a063317c2e71
+引自: https://juejin.im/post/5a77fe396fb9a063317c2e71
