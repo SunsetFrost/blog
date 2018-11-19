@@ -15,7 +15,7 @@ customize:
     profile:
         enabled: true # Whether to show profile bar
         fixed: true
-        avatar: css/images/head-icon-min.jpg
+        avatar: css/images/head-icon.jpg
         gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
         author: SunsetFrost
         author_title: Frontend Developer
