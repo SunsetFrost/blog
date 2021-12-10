@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "sunet_frost_blog",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.17.3",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2"
