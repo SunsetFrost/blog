@@ -1,60 +1,122 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/AntHome.module.css'
-import { Layout, Menu, Breadcrumb, Button } from 'antd';
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import { FunctionComponent } from "react";
+import type { GetStaticProps } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import Script from "next/script";
+import fs from "fs";
+import matter from "gray-matter";
+import { Layout, Menu, Breadcrumb, Button } from "antd";
+import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
+import { EssayMeta } from "./model/essay";
+import EssayCard from "./components/card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
+import { type } from "os";
 
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
-
-const Home: NextPage = () => {
-  return (
-    <Layout style={{ minHeight: '100vh' }}>
-        <Sider>
-          <div className={styles.logo} />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
-              Option 1
-            </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Option 2
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9" icon={<FileOutlined />}>
-              Files
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout>
-          <Header className={styles.background} style={{ padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div className={styles.background} style={{ padding: 24, minHeight: 360 }}>
-              Bill is a cat.
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-        </Layout>
-      </Layout>
-  )
+export interface IProps {
+  essays: EssayMeta[];
 }
 
-export default Home
+const Home: FunctionComponent<IProps> = ({ essays }) => {
+  return (
+    <div className="blog-container">
+      <Swiper
+        className="blog-slider"
+        spaceBetween={30}
+        effect="fade"
+        loop={true}
+        mousewheel={true}
+        direction={'vertical'}
+        modules={[Pagination]}
+        pagination={{ clickable: true, type: 'bullets' }}
+      >
+        <SwiperSlide className="blog-slider__item">
+          <div className="blog-slider__img">
+            <Image
+              width={300}
+              height={300}
+              className="test-img"
+              src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759872/kuldar-kalvik-799168-unsplash.webp"
+              alt=""
+            />
+          </div>
+          <div className="blog-slider__content">
+            <span className="blog-slider__code">26 December 2019</span>
+            <div className="blog-slider__title">Lorem Ipsum Dolor</div>
+            <div className="blog-slider__text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Recusandae voluptate repellendus magni illo ea animi?{" "}
+            </div>
+            <a href="#" className="blog-slider__button">
+              READ MORE
+            </a>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className="blog-slider__item swiper-slide">
+          <div className="blog-slider__img">
+            <Image
+              width={300}
+              height={300}
+              src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759871/jason-leung-798979-unsplash.webp"
+              alt=""
+            />
+          </div>
+          <div className="blog-slider__content">
+            <span className="blog-slider__code">26 December 2019</span>
+            <div className="blog-slider__title">Lorem Ipsum Dolor2</div>
+            <div className="blog-slider__text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Recusandae voluptate repellendus magni illo ea animi?
+            </div>
+            <a href="#" className="blog-slider__button">
+              READ MORE
+            </a>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className="blog-slider__item swiper-slide">
+          <div className="blog-slider__img">
+            <Image
+              width={300}
+              height={300}
+              src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759871/alessandro-capuzzi-799180-unsplash.webp"
+              alt=""
+            />
+          </div>
+          <div className="blog-slider__content">
+            <span className="blog-slider__code">26 December 2019</span>
+            <div className="blog-slider__title">Lorem Ipsum Dolor</div>
+            <div className="blog-slider__text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Recusandae voluptate repellendus magni illo ea animi?
+            </div>
+            <a href="#" className="blog-slider__button">
+              READ MORE
+            </a>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
+  );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const files = fs.readdirSync("posts");
+
+  const posts = files.map((filename) => {
+    const markdownWithMeta = fs.readFileSync(`posts/${filename}`).toString();
+    const { data } = matter(markdownWithMeta);
+
+    return {
+      ...data,
+      slug: filename.split(".")[0],
+    };
+  });
+
+  return {
+    props: {
+      essays: posts,
+    },
+  };
+};
+
+export default Home;
