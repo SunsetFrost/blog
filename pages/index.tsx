@@ -2,16 +2,12 @@ import { FunctionComponent } from "react";
 import type { GetStaticProps } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
 import fs from "fs";
 import matter from "gray-matter";
-import { Layout, Menu, Breadcrumb, Button } from "antd";
-import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
 import { EssayMeta } from "./model/essay";
 import EssayCard from "./components/card";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
-import { type } from "os";
+import { Pagination, Navigation, Scrollbar, A11y, Mousewheel } from "swiper";
 
 export interface IProps {
   essays: EssayMeta[];
@@ -27,8 +23,10 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
         loop={true}
         mousewheel={true}
         direction={'vertical'}
-        modules={[Pagination]}
+        modules={[Pagination, Navigation, Scrollbar, A11y, Mousewheel]}
         pagination={{ clickable: true, type: 'bullets' }}
+        navigation
+        scrollbar={{ draggable: true }}
       >
         <SwiperSlide className="blog-slider__item">
           <div className="blog-slider__img">
