@@ -20,3 +20,12 @@ npm install  @types/react-syntax-highlighter --save-dev
 
 ### react markdown bug
 type 报错
+
+## Deploy
+vercel
+
+## TODO
+- [ ] 样式 图片悬浮效果
+- [ ] page 显示 bug
+- [ ] markdown style
+- [ ] mobile adjust

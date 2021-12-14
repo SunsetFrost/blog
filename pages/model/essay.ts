@@ -3,6 +3,7 @@ interface EssayMeta {
   description: string;
   slug: string;
   thumbnail: string;
+  date: string;
 }
 
 interface EssayInfo {
