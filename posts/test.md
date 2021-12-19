@@ -1,5 +1,5 @@
 ---
-title: NestJS + Markdown + Typescript搭建极简个人博客
+title: Test2
 description: NextJS是基于React的框架，支持SSR等特性，本文使用NextJS和Markdown搭建极简个人博客
 thumbnail: /images/2021-12-14.jpg
 date: 14 December 2021

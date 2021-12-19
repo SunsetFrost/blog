@@ -5,13 +5,7 @@ import matter from "gray-matter";
 import { EssayMeta } from "./model/essay";
 import EssayCard from "./components/card";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Pagination,
-  Navigation,
-  Scrollbar,
-  A11y,
-  Mousewheel,
-} from "swiper";
+import { Pagination, Navigation, Scrollbar, A11y, Mousewheel } from "swiper";
 
 export interface IProps {
   essays: EssayMeta[];
@@ -19,9 +13,9 @@ export interface IProps {
 
 const Home: FunctionComponent<IProps> = ({ essays }) => {
   return (
-    <div className="blog-container">
+    <div className="w-screen h-screen bg-gradient-to-br from-cyan-400 to-blue-500 flex">
       <Swiper
-        className="blog-slider"
+        className="p-6 w-3/5 h-2/4 m-auto bg-white rounded-xl shadow-lg flex items-center space-x-4"
         spaceBetween={30}
         effect="fade"
         loop={true}
@@ -33,8 +27,9 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
         navigation
       >
         {essays.map((essay, index) => (
-          <SwiperSlide key={index} className="blog-slider__item">
-            <EssayCard essay={essay} />
+          <SwiperSlide key={index} className="">
+            {/* <EssayCard essay={essay} /> */}
+            {essay.title}
           </SwiperSlide>
         ))}
       </Swiper>
