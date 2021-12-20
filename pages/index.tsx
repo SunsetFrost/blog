@@ -13,9 +13,9 @@ export interface IProps {
 
 const Home: FunctionComponent<IProps> = ({ essays }) => {
   return (
-    <div className="w-screen h-screen bg-gradient-to-br from-cyan-400 to-blue-500 flex">
+    <div className="w-screen h-screen bg-gradient-to-br from-cyan-400 to-blue-500 flex shadow-xl">
       <Swiper
-        className="p-6 w-3/5 h-2/4 m-auto bg-white rounded-xl shadow-lg flex items-center space-x-4"
+      className="p-6 w-10/12 lg:w-3/5 h-4/5  lg:h-2/4 m-auto bg-white rounded-xl shadow-lg"
         spaceBetween={30}
         effect="fade"
         loop={true}
@@ -28,8 +28,7 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
       >
         {essays.map((essay, index) => (
           <SwiperSlide key={index} className="">
-            {/* <EssayCard essay={essay} /> */}
-            {essay.title}
+            <EssayCard essay={essay} />
           </SwiperSlide>
         ))}
       </Swiper>

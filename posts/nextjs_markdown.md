@@ -6,9 +6,6 @@ date: 14 December 2021
 categories: IT
 ---
 
-# NestJS + Markdown + Typescript 搭建极简个人博客
-NextJS是基于React的框架，支持SSR等特性，本文使用NextJS和Markdown搭建极简个人博客
-
 ## 创建nextjs项目
 ```bash
 # with yarn
@@ -74,6 +71,13 @@ export default function Home() {
   )
 }
 ```
+#### Bug:Vscode Tailwind插件不生效问题
+安装插件后发现智能提示并没有生效，解决方案如下
+> In vscode - extensions - Tailwin CSS Intellisense. Click on the settings button ("manage").  
+Find Tailwind CSS - Include languages
+Click 'edit in settings.json'  
+add
+"tailwindCSS.includeLanguages": { "plaintext": "javascript" }
 
 ## 博客数据Model定义
 将博客数据分为元数据与正文，元数据包含博文标题，创作日期等信息；正文对应Markdown字符串。
