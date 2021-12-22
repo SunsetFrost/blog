@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 // import 'antd/dist/antd.css'
-import 'swiper/scss'
+import 'swiper/css'
 import 'swiper/css/pagination';
 
 function MyApp({ Component, pageProps }: AppProps) {

@@ -13,17 +13,17 @@ interface IProps {
 const Essay: FunctionComponent<IProps> = ({ essay }) => {
   return (
     <div className="flex flex-col align-middle w-screen h-screen">
-      <div className="relative w-full">
+      <div className="relative w-full h-40 lg:h-80">
         <div className="bg-gradient-to-br from-cyan-200 to-blue-500">
-          <img className="object-cover opacity-30" src={essay.meta.thumbnail} />
+          <img className="w-full h-96 object-cover opacity-30" src={essay.meta.thumbnail} />
         </div>
 
         <div className="absolute top-0 left-0 w-full">
-          <h1 className="text-white w-3/5 text-center font-bold text-xl mx-auto mt-10">{essay.meta.title}</h1>
+          <h1 className="text-slate-50 w-4/5 text-center font-bold  text-lg lg:text-3xl mx-auto mt-10 lg:mt-20">{essay.meta.title}</h1>
         </div>
       </div>
 
-      <div className="w-11/12 -mt-10 z-10 py-8 px-4 mx-auto bg-white rounded-xl shadow-xl">
+      <div className="w-11/12 lg:max-w-6xl -mt-10 z-10 py-8 px-4 lg:px-12 mx-auto bg-white rounded-xl shadow-xl">
         <Markdown content={essay.content} />
       </div>
     </div>

@@ -2,24 +2,23 @@
   "name": "sunet_frost_blog",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port=8099",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
-    "antd": "^4.17.3",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "^7.1.1",
     "react-syntax-highlighter": "^15.4.5",
     "remark-gfm": "^3.0.1",
-    "sass": "^1.45.0",
     "swiper": "^7.3.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.0",
     "@types/node": "16.11.12",
     "@types/react": "17.0.37",
     "@types/react-syntax-highlighter": "^13.5.2",

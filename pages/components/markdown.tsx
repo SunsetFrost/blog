@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
+import { Components } from 'react-markdown/lib/ast-to-react'
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-import { FunctionComponent } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import remarkGfm from "remark-gfm";
 
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Markdown = ({ content }: Props) => {
-  const components = {
+  const components: Components = {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || "");
 
@@ -31,13 +31,13 @@ const Markdown = ({ content }: Props) => {
   };
 
   return (
-    <div className="markdown-body">
+    <article className="prose prose-sm  lg:prose-md">
       <ReactMarkdown
         components={components}
         children={content}
         remarkPlugins={[remarkGfm]}
       />
-    </div>
+    </article>
   );
 };
 
