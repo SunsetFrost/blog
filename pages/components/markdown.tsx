@@ -1,8 +1,7 @@
 import ReactMarkdown from "react-markdown";
-import { Components } from 'react-markdown/lib/ast-to-react'
-import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-
+import { Components } from "react-markdown/lib/ast-to-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import remarkGfm from "remark-gfm";
 
 type Props = {
@@ -15,6 +14,7 @@ const Markdown = ({ content }: Props) => {
       const match = /language-(\w+)/.exec(className || "");
 
       return !inline && match ? (
+        // @ts-expect-error: Let's ignore a compile error like this unreachable code 
         <SyntaxHighlighter
           style={materialDark}
           PreTag="div"

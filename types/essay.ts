@@ -1,4 +1,4 @@
-interface EssayMeta {
+export type EssayMeta = {
   title: string;
   description: string;
   slug: string;
@@ -6,12 +6,7 @@ interface EssayMeta {
   date: string;
 }
 
-interface EssayInfo {
+export type EssayInfo = {
   meta: EssayMeta;
   content: string;
-}
-
-export type {
-  EssayMeta,
-  EssayInfo,
 }

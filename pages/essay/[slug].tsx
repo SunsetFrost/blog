@@ -1,9 +1,9 @@
 import { FunctionComponent } from "react";
 import Image from "next/image";
-import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import matter from "gray-matter";
-import { EssayInfo } from "../model/essay";
+import { getPostSlugs, getPostString } from "../../lib/api";
+import { EssayInfo } from "../../types/essay";
 import Markdown from "../components/markdown";
 
 interface IProps {
@@ -13,13 +13,20 @@ interface IProps {
 const Essay: FunctionComponent<IProps> = ({ essay }) => {
   return (
     <div className="flex flex-col align-middle w-screen h-screen">
-      <div className="relative w-full h-40 lg:h-80">
-        <div className="bg-gradient-to-br from-cyan-200 to-blue-500">
-          <img className="w-full h-96 object-cover opacity-30" src={essay.meta.thumbnail} />
+      <div className="relative w-screen h-40 lg:h-80">
+        <div className="w-full h-full bg-gradient-to-br from-cyan-200 to-blue-500">
+          <Image
+            className="object-cover object-center opacity-30"
+            src={essay.meta.thumbnail}
+            alt="blog tumbnail"
+            layout="fill"
+          />
         </div>
 
         <div className="absolute top-0 left-0 w-full">
-          <h1 className="text-slate-50 w-4/5 text-center font-bold  text-lg lg:text-3xl mx-auto mt-10 lg:mt-20">{essay.meta.title}</h1>
+          <h1 className="text-slate-50 w-4/5 text-center font-bold  text-lg lg:text-3xl mx-auto mt-10 lg:mt-20">
+            {essay.meta.title}
+          </h1>
         </div>
       </div>
 
@@ -31,7 +38,7 @@ const Essay: FunctionComponent<IProps> = ({ essay }) => {
 };
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync("posts");
+  const files = getPostSlugs();
   const paths = files.map((file) => ({
     params: {
       slug: file.split(".")[0],
@@ -45,7 +52,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params;
-  const content = fs.readFileSync(`posts/${slug}.md`).toString();
+  const filename = `${slug}.md`;
+  const content = getPostString(filename);
   const info = matter(content);
   const essay = {
     meta: {

@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
 import type { GetStaticProps } from "next";
-import fs from "fs";
 import matter from "gray-matter";
-import { EssayMeta } from "./model/essay";
+import { getPostSlugs, getPostString } from "../lib/api";
+import { EssayMeta } from "../types/essay";
 import EssayCard from "./components/card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Scrollbar, A11y, Mousewheel } from "swiper";
@@ -15,7 +15,7 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
   return (
     <div className="w-screen h-screen bg-gradient-to-br from-cyan-400 to-blue-500 flex shadow-xl">
       <Swiper
-      className="p-6 w-10/12 lg:w-3/5 h-4/5  lg:h-2/4 m-auto bg-white rounded-xl shadow-lg"
+        className="p-6 w-10/12 lg:w-3/5 h-4/5  lg:h-2/4 m-auto bg-white rounded-xl shadow-lg"
         spaceBetween={30}
         effect="fade"
         loop={true}
@@ -28,7 +28,7 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
       >
         {essays.map((essay, index) => (
           <SwiperSlide key={index} className="">
-            <EssayCard essay={essay} />
+            <EssayCard date={essay.date} title={essay.title} description={essay.description} thumbnail={essay.thumbnail} slug={essay.slug} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -37,10 +37,10 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const files = fs.readdirSync("posts");
+  const files = getPostSlugs();
 
   const posts = files.map((filename) => {
-    const markdownWithMeta = fs.readFileSync(`posts/${filename}`).toString();
+    const markdownWithMeta = getPostString(filename);
     const { data } = matter(markdownWithMeta);
 
     return {
