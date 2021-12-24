@@ -13,8 +13,8 @@ interface IProps {
 const Essay: FunctionComponent<IProps> = ({ essay }) => {
   return (
     <div className="flex flex-col align-middle w-screen h-screen">
-      <div className="relative w-screen h-40 lg:h-80">
-        <div className="w-full h-full bg-gradient-to-br from-cyan-200 to-blue-500">
+      <div className="relative w-screen h-44 lg:h-80">
+        <div className="w-full h-44 lg:h-80 bg-gradient-to-br from-cyan-200 to-blue-500">
           <Image
             className="object-cover object-center opacity-30"
             src={essay.meta.thumbnail}
