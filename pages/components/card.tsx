@@ -12,8 +12,8 @@ type Props = {
 const EssayCard = ({ date, title, description, thumbnail, slug }: Props) => {
   return (
     <div className="w-full h-full flex items-center">
-      <div className="w-full h-full lg:m-8 flex flex-col lg:flex-row justify-center items-center">
-        <div className="w-48 max-w-full max-h-2/5 lg:w-2/5 p-4">
+      <div className="w-full h-full flex flex-col lg:flex-row justify-center items-center">
+        <div className="w-48 lg:w-2/5 max-w-full max-h-2/5 p-4">
           <div className="aspect-w-1 aspect-h-1 rounded-xl mx-auto bg-gradient-to-br from-cyan-200 to-blue-500 shadow-xl">
             <Image
               className="w-full h-full object-cover object-center opacity-30 rounded-xl"
@@ -23,7 +23,7 @@ const EssayCard = ({ date, title, description, thumbnail, slug }: Props) => {
             />
           </div>
         </div>
-        <div className="w-full lg:w-2/5 h-3/5 lg:h-4/5 px-8 py-4 text-center">
+        <div className="w-full lg:w-2/5 h-3/5 lg:h-2/3 px-8 text-center">
           <div className="h-4/5 pb-4 text-ellipsis overflow-hidden">
             <div className="text-base font-medium text-slate-400 mb-4">
               {date}
@@ -35,12 +35,12 @@ const EssayCard = ({ date, title, description, thumbnail, slug }: Props) => {
               {description}
             </div>
           </div>
-          <div className="h-1/5 text-center">
-            <Link href={`/essay/${slug}`} passHref>
-              <div className="py-2 px-4 rounded-lg shadow-md text-white bg-sky-500 hover:bg-sky-700">
-                READ MORE
-              </div>
-            </Link>
+          <div className="h-1/5 flex">
+            <div className="w-full h-10 py-2 px-4 rounded-lg shadow-md text-white bg-sky-500 hover:bg-sky-700 text-center self-end ">
+              <Link href={`/essay/${slug}`} passHref>
+                <div className="">READ MORE</div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

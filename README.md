@@ -1,12 +1,6 @@
----
-title: NestJS + Markdown + Tailwind搭建极简个人博客
-description: NextJS是支持SSR等特性的出色的React框架，通过该框架能够极大提升博客的SEO表现。本文使用NextJS+Markdown+Tailwind+Typescript搭建极简个人博客。
-thumbnail: /images/2021-12-14.jpg
-date: 14 December 2021
-categories: IT
----
+# Nest Blog
 ## 简介
-本文将介绍
+项目要点
 - NextJS + React Markdown
 - Tailwind
 - 读取本地Markdown文件夹生成博客首页

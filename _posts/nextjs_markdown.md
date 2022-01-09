@@ -11,6 +11,31 @@ categories: IT
 - Tailwind
 - 读取本地Markdown文件夹生成博客首页
 - 读取Markdown文件内容生成博客详情页
+
+### PC预览
+![PC预览](/images/blog-pc.gif)
+
+### 移动端预览
+![PC预览](/images/blog-mobile.gif)
+
+- [简介](#简介)
+  - [PC预览](#pc预览)
+  - [移动端预览](#移动端预览)
+- [创建Nextjs项目](#创建nextjs项目)
+  - [markdown包](#markdown包)
+  - [react markdown](#react-markdown)
+- [Tailwind](#tailwind)
+  - [Vscode Tailwind插件不生效问题](#vscode-tailwind插件不生效问题)
+  - [MarkDown Heading样式不生效](#markdown-heading样式不生效)
+  - [Tailwind自定义主题](#tailwind自定义主题)
+- [博客数据Model定义](#博客数据model定义)
+- [博客首页](#博客首页)
+  - [首页卡片](#首页卡片)
+- [博客详情页](#博客详情页)
+  - [Markdown组件](#markdown组件)
+- [Deploy](#deploy)
+- [结语](#结语)
+
 ## 创建Nextjs项目
 ```bash
 # with yarn
@@ -361,8 +386,14 @@ const Markdown = ({ content }: Props) => {
 ```
 
 ## Deploy
-部署可通过传统build+静态部署或者Gitpages的方案解决，笔者推荐使用Vercel，能够实现自动化部署且不同于Github其访问速度良好。
+部署网站方案一般为
+- 传统build+静态部署或者
+- Gitpages
+- Gatsby
+- Vercel  
+笔者推荐使用Vercel，仅需使用github账号能够实现自动化部署且访问速度良好。
 
 ## 结语
 项目完整源码地址: [Github](https://github.com/SunsetFrost/blog)  
+博客地址：[Sunset Frost Blog](https://sunsetfrost.art)
 如本文对您有些许帮助，请Star下！！！

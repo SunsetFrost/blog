@@ -29,7 +29,7 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
         <meta property="og:type" content="website" />
       </Head>
       <Swiper
-        className="p-6 w-10/12 lg:w-3/5 h-4/5  lg:h-2/4 m-auto bg-white rounded-xl shadow-lg"
+        className="p-6 w-10/12 lg:w-3/5 h-3/4 lg:h-2/4 m-auto bg-white rounded-xl shadow-lg"
         spaceBetween={30}
         effect="fade"
         loop={true}
