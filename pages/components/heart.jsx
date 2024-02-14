@@ -214,7 +214,7 @@ const Content = () => {
   }, []);
 
   return (
-        <canvas id="pinkboard" className="w-full h-4/6"></canvas>
+        <canvas id="pinkboard" className="w-4/5 h-4/6"></canvas>
   );
 };
 
