@@ -9,6 +9,8 @@ import { getPostSlugs, getPostString } from "../lib/api";
 import { EssayMeta } from "../types/essay";
 import EssayCard from "./components/card";
 import Meta from "./components/meta";
+// import Canvas from "./components/triangle";
+import Canvas from "./components/heart";
 
 export interface IProps {
   essays: EssayMeta[];
@@ -16,7 +18,7 @@ export interface IProps {
 
 const Home: FunctionComponent<IProps> = ({ essays }) => {
   return (
-    <div className="w-screen h-screen bg-gradient-to-br from-cyan-400 to-blue-500 flex shadow-xl">
+    <div className="w-screen h-screen bg-gradient-to-br from-gray-800 to-gray-900 flex shadow-xl">
       <Meta />
       <Head>
         <title>Sunset Frost Blog</title>
@@ -25,10 +27,22 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
           property="og:description"
           content="Sunset Frost's Blog. Life needs to have some meaning."
         />
-        <meta property="og:url" content="https://sunsetfrost.art/" />
+        <meta property="og:url" content="https://sunsetfrost.com/" />
         <meta property="og:type" content="website" />
       </Head>
-      <Swiper
+      <div className="container mx-auto">
+        {/* <div className="flex flex-col"> */}
+        {/* <div className="flex-auto"> */}
+        <div className="text-2xl font-bold text-white text-center p-12">
+          致我最可爱的美少女🐷
+        </div>
+        {/* </div> */}
+        {/* <div className="flex-auto w-8 h-32"> */}
+        <Canvas />
+        {/* </div> */}
+        {/* </div> */}
+      </div>
+      {/* <Swiper
         className="p-6 w-10/12 lg:w-3/5 h-3/4 lg:h-2/4 m-auto bg-white rounded-xl shadow-lg"
         spaceBetween={30}
         effect="fade"
@@ -51,7 +65,7 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
             />
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </div>
   );
 };
