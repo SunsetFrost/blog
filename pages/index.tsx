@@ -4,6 +4,7 @@ import Head from "next/head";
 import matter from "gray-matter";
 import { Pagination, Navigation, Scrollbar, A11y, Mousewheel } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
 
 import { getPostSlugs, getPostString } from "../lib/api";
 import { EssayMeta } from "../types/essay";
@@ -30,6 +31,12 @@ const Home: FunctionComponent<IProps> = ({ essays }) => {
         <meta property="og:url" content="https://sunsetfrost.com/" />
         <meta property="og:type" content="website" />
       </Head>
+      <Image
+        className="w-full h-full object-cover object-center opacity-10 rounded-xl"
+        src="/images/valentine.png"
+        alt=""
+        layout="fill"
+      />
       <div className="container mx-auto">
         {/* <div className="flex flex-col"> */}
         {/* <div className="flex-auto"> */}
